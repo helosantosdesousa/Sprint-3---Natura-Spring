@@ -57,6 +57,31 @@ public class UsuarioDAO {
         }
         return usuario;
     }
+    public void atualizar (Usuario usuario) {
+        Connection conn = connection.recuperaConexao();
+        String sql = "update natura_usuario set cpf = ? where username = ? ";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, usuario.getCpf());
+            ps.setString(2, usuario.getUsername());
+
+            ps.execute();
+        } catch (SQLException e) {
+            System.out.println("erro ao atualizar dados do usuário\n" + e);
+        }
+    }
+    public void apagarConta (String username)  {
+        Connection conn = connection.recuperaConexao();
+
+        String sql = "DELETE FROM natura_usuario WHERE username = ?";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, username);
+            ps.execute();
+        } catch (SQLException e) {
+            System.out.println("erro ao deletar username do usuário\n" + e);
+        }
+    }
 
 
 }
