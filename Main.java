@@ -1,0 +1,44 @@
+package br.com.fiap.naturaspring.domain;
+
+import br.com.fiap.naturaspring.domain.post.Post;
+import br.com.fiap.naturaspring.domain.post.PostDAO;
+import br.com.fiap.naturaspring.domain.topico.Topico;
+import br.com.fiap.naturaspring.domain.topico.TopicoDAO;
+import br.com.fiap.naturaspring.domain.usuario.Usuario;
+import br.com.fiap.naturaspring.domain.usuario.UsuarioDAO;
+
+import java.util.List;
+//import br.com.fiap.naturaspring.domain.usuario.UsuarioService;
+
+public class Main {
+    public static void main(String[] args) {
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        Usuario usuario;
+
+        PostDAO postDAO = new PostDAO();
+        Post post;
+
+        TopicoDAO topicoDAO = new TopicoDAO();
+        Topico topico;
+
+
+        // ------- Inserção na tabela natura_usuarios ------------
+        /*usuario = new Usuario(333, "mariana");
+        usuarioDAO.criarConta(usuario);*/
+
+        // ------- Inserção na tabela natura_posts ------------
+        /*post = new Post(1, "Chegaram os novos KITS");
+        postDAO.criarPost(post);*/
+
+        // ------- Inserção na tabela natura_posts ------------
+        /*topico = new Topico(2, "Ajuda");
+        topicoDAO.criarTopico(topico);*/
+
+        // ------------- Listagem dos usuários ---------------
+		/*List<Usuario> lista = usuarioDAO.listar();
+		for(Usuario u : lista) {
+			System.out.println(u);
+		}
+    }*/
+    }
+}
