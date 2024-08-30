@@ -19,15 +19,17 @@ public class UsuarioDAO {
     //Criar uma nova conta
     public void criarConta(Usuario usuario) {
 
-        String sql = "INSERT INTO NATURA_USUARIO(username, cpf)"
-                + "VALUES(?,?)";
+        String sql = "INSERT INTO NATURA_USUARIOS(cpf, username, email, nivel_natura)"
+                + "VALUES(?,?,?,?)";
 
         Connection conn = connection.recuperaConexao();
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
 
-            ps.setString(1, usuario.getUsername());
-            ps.setInt(2, usuario.getCpf());
+            ps.setString(1, usuario.getCpf());
+            ps.setString(2, usuario.getUsername());
+            ps.setString(3, usuario.getEmail());
+            ps.setString(4, usuario.getNivel_natura());
 
             ps.execute();
         } catch (SQLException e) {
@@ -49,7 +51,10 @@ public class UsuarioDAO {
 
             ResultSet rs = ps.executeQuery();
             if(rs.next()) {
-                usuario = new Usuario(rs.getString("username"),rs.getInt("cpf"));
+                usuario = new Usuario(rs.getString("cpf"),
+                        rs.getString("username"),
+                        rs.getString("email"),
+                        rs.getString("nivel_natura"));
             }
         } catch (SQLException e) {
             System.out.println("erro ao pesquisar o usuario\n" + e);
@@ -62,7 +67,7 @@ public class UsuarioDAO {
         String sql = "update natura_usuario set cpf = ? where username = ? ";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, usuario.getCpf());
+            ps.setString(1, usuario.getCpf());
             ps.setString(2, usuario.getUsername());
 
             ps.execute();
@@ -81,6 +86,27 @@ public class UsuarioDAO {
         } catch (SQLException e) {
             System.out.println("erro ao deletar username do usuário\n" + e);
         }
+    }
+
+    public List<Usuario> listar() {
+        List<Usuario> lista = new ArrayList<Usuario>();
+        Connection conn = connection.recuperaConexao();
+        String sql = "select * from natura_usuarios";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()) {
+                lista.add(new Usuario(rs.getString("cpf"),
+                        rs.getString("username"),
+                        rs.getString("email"),
+                        rs.getString("nivel_natura")
+                        ));
+            }
+        } catch (SQLException e) {
+            System.out.println("erro ao listar usuários\n" + e);
+        }
+
+        return lista;
     }
 
 

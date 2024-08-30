@@ -3,26 +3,19 @@ package br.com.fiap.naturaspring.domain.topico;
 public class Topico {
     private int id_topico;
     private String titulo;
+    private String categoria;
 
-    public Topico(int id_topico, String titulo) {
+    public Topico(int id_topico, String titulo, String categoria) {
         super();
         this.id_topico = id_topico;
         this.titulo = titulo;
+        this.categoria = categoria;
     }
 
-    public Topico(int id_topico) {
-        super();
-        this.id_topico = id_topico;
-    }
-
-    public Topico(String titulo) {
-        super();
-        this.titulo = titulo;
-    }
 
     @Override
     public String toString() {
-        return id_topico + " -- " + titulo;
+        return id_topico + " -- " + titulo + " -- " + categoria;
     }
 
     public int getId_topico() {
@@ -40,4 +33,13 @@ public class Topico {
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
 }
+

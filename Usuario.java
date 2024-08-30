@@ -1,35 +1,32 @@
 package br.com.fiap.naturaspring.domain.usuario;
 
 public class Usuario {
-    private int cpf;
+    private String cpf;
     private String username;
+    private String email;
+    private String nivel_natura;
 
-    public Usuario(int cpf, String username) {
+    public Usuario(String cpf, String username, String email, String nivel_natura) {
         super();
         this.cpf = cpf;
         this.username = username;
+        this.email = email;
+        this.nivel_natura = nivel_natura;
     }
 
-    public Usuario(String username) {
-        super();
-        this.username = username;
-    }
 
-    public Usuario(int cpf) {
-        super();
-        this.cpf = cpf;
-    }
 
     @Override
     public String toString() {
-        return cpf + " -- " + username;
+        return cpf + " -- " + username + " -- "  + email + " -- " + nivel_natura;
     }
 
-    public int getCpf() {
+
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(int cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
@@ -39,5 +36,21 @@ public class Usuario {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getNivel_natura() {
+        return nivel_natura;
+    }
+
+    public void setNivel_natura(String nivel_natura) {
+        this.nivel_natura = nivel_natura;
     }
 }

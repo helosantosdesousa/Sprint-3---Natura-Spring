@@ -1,28 +1,23 @@
 package br.com.fiap.naturaspring.domain.post;
 
+import java.time.LocalDate;
+
 public class Post {
     private int id_post;
     private String conteudo_post;
+    private LocalDate data_post;
 
-    public Post(int id_post, String conteudo_post) {
+    public Post(int id_post, String conteudo_post, LocalDate data_post) {
         super();
         this.id_post = id_post;
         this.conteudo_post = conteudo_post;
+        this.data_post = data_post;
     }
 
-    public Post(int id_post) {
-        super();
-        this.id_post = id_post;
-    }
-
-    public Post(String conteudo_post) {
-        super();
-        this.conteudo_post = conteudo_post;
-    }
 
     @Override
     public String toString() {
-        return id_post + " -- " + conteudo_post;
+        return id_post + " -- " + conteudo_post + " -- " + data_post;
     }
 
     public int getId_post() {
@@ -39,5 +34,13 @@ public class Post {
 
     public void setConteudo_post(String conteudo_post) {
         this.conteudo_post = conteudo_post;
+    }
+
+    public LocalDate getData_post() {
+        return data_post;
+    }
+
+    public void setData_post(LocalDate data_post) {
+        this.data_post = data_post;
     }
 }
