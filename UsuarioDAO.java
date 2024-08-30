@@ -36,37 +36,27 @@ public class UsuarioDAO {
     }
 
     //pesquisar username
-    /*public Usuario pesquisarUsername(String username) {
+    public Usuario pesquisarUsername(String username) {
         Usuario usuario = null;
+
         String sql = "select * from natura_usuario where username = ?";
+
+        Connection conn = connection.recuperaConexao();
+
         try {
-            Connection conn = connection.recuperaConexao();
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, username);
-            try (ResultSet rs = ps.executeQuery()){
-                if (rs.next()){
-                    usuario = new Usuario(rs.getInt("cpf", rs.getString("username")));
-                }
-            } catch (SQLException e){
-                System.out.println("Erro ao pesquisar o usuário\n" + e);
-            }
-            return usuario;
-    }
 
-    public List<Usuario> listar() {
-        List<Usuario> lista = new ArrayList<Usuario>();
-        Connection conn = connection.recuperaConexao();
-        sql = "select * from natura_usuario";
-        try {
-            conn.prepareStatement(sql);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                lista.add(new Usuario(rs.getInt("cpf"), rs.getString("username")));
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()) {
+                usuario = new Usuario(rs.getString("username"),rs.getInt("cpf"));
             }
         } catch (SQLException e) {
-            System.out.println("erro ao listar os usuários\n" + e);
-        }
+            System.out.println("erro ao pesquisar o usuario\n" + e);
 
-        return lista;
-    }*/
+        }
+        return usuario;
+    }
+
+
 }

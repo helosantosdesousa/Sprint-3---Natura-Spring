@@ -23,8 +23,8 @@ public class Main {
 
 
         // ------- Inserção na tabela natura_usuarios ------------
-        /*usuario = new Usuario(333, "mariana");
-        usuarioDAO.criarConta(usuario);*/
+        usuario = new Usuario("laura", 4444);
+        usuarioDAO.criarConta(usuario);
 
         // ------- Inserção na tabela natura_posts ------------
         /*post = new Post(1, "Chegaram os novos KITS");
@@ -33,6 +33,19 @@ public class Main {
         // ------- Inserção na tabela natura_posts ------------
         /*topico = new Topico(2, "Ajuda");
         topicoDAO.criarTopico(topico);*/
+
+        // ------- Pesquisar usuário ------------
+
+        /*Usuario pesquisa = usuarioDAO.pesquisarUsername("mariana");
+
+        if (pesquisa == null) {
+            System.out.println("Usuário não existe.");
+        } else {
+            System.out.println("********* CPF -- USERNAME **********");
+            System.out.println(pesquisa.getCpf() + " -- " + pesquisa.getUsername());
+        }*/
+
+
 
         // ------------- Listagem dos usuários ---------------
 		/*List<Usuario> lista = usuarioDAO.listar();
